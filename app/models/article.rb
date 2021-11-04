@@ -1,4 +1,10 @@
 class Article < ApplicationRecord
+  # From the recommendation of the strong migrations gem:
+  #
+  # Active Record caches attributes, which causes problems when
+  # removing columns. Be sure to ignore the column:
+  self.ignored_columns = ["privileged_users_reaction_points_sum"]
+
   include CloudinaryHelper
   include ActionView::Helpers
   include Storext.model
